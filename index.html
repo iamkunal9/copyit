@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div style="display: none;">
+  
+<input type="text" value="Hello World" id="myInput">
+
+</div>
+
+
+<script>
+  function $_GET() {
+  var link = window.location.href;
+  var arr = link.split("?link=");
+  var mag_link=arr[1];
+  return mag_link;
+  
+}
+  var content = $_GET();
+  document.getElementById("myInput").value = content;
+
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+</script>
+</body>
+</html>
