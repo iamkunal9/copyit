@@ -9,23 +9,56 @@
 <input type="text" value="Hello World" id="myInput">
 
 </div>
+<div id="div">
+<marquee direction="left" height="150" width="auto" bgcolor="white" style="font-size:100px" id="header">MAGNET LINK COPIED SUCCESSFULLY</marquee>
+<div align="center">
+<h3 id="l">Link Copied:-</h3>
+<input id="data" ></input>
+<!-- <a href="https://www.utorrent.com/">Download using utorrent</a> -->
+</div>
+</div>
 
-
+<h1 id="err" align="center"></h1>
 <script>
   function $_GET() {
   var link = window.location.href;
+  if(!(link.includes("?link=")) || link.split("?link=")[1].length == 0){
+document.getElementById('div').style.display = 'none';
+document.getElementById('err').innerHTML = 'COPY DATA IS NOT PROVIDED!!!';
+return 0;
+  }
+  else{
   var arr = link.split("?link=");
   var mag_link=arr[1];
   return mag_link;
-  
+  }
 }
-  var content = $_GET();
+function copy(content){
   document.getElementById("myInput").value = content;
+  document.getElementById("data").value = content;
 
   var copyText = document.getElementById("myInput");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(copyText.value);
+}
+  var content = $_GET();
+  if(content == 0){
+
+  }
+  else if(content.slice(0,4)=="http"){
+    document.getElementById('header').innerHTML = 'LINK COPIED SUCCESSFULL';
+    copy(content);
+  }
+
+  else if(content.slice(0,8)=="magnet:?"){
+    copy(content);
+}
+else{
+  document.getElementById('header').innerHTML = 'COPY SUCCESSFULL';
+  document.getElementById('l').innerHTML = 'Data Copied:-';
+  copy(content);
+}
 </script>
 </body>
 </html>
