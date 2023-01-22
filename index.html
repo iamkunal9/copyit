@@ -22,13 +22,13 @@
 <script>
   function $_GET() {
   var link = window.location.href;
-  if(!(link.includes("?link=")) || link.split("?link=")[1].length == 0){
+  if(!(link.includes("?data=")) || link.split("?data=")[1].length == 0){
 document.getElementById('div').style.display = 'none';
 document.getElementById('err').innerHTML = 'COPY DATA IS NOT PROVIDED!!!';
 return 0;
   }
   else{
-  var arr = link.split("?link=");
+  var arr = link.split("?data=");
   var mag_link=arr[1];
   return mag_link;
   }
