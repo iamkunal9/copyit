@@ -8,7 +8,7 @@
 <marquee direction="left" height="150" width="auto" bgcolor="white" style="font-size:100px" id="header">MAGNET LINK COPIED SUCCESSFULLY</marquee>
 <div align="center">
 <h3 id="l">Link Copied:-</h3>
-<input id="data" ></input>
+<input id="data" ></input><br>
 <span style="align:center;"><a href="javascript:copy()">Copy To clipboard</a></span>
 <!-- <a href="https://www.utorrent.com/">Download using utorrent</a> -->
 </div>
@@ -44,17 +44,16 @@ function copy(){
   document.getElementById("data").value = content;
   if(content.slice(0,4)=="http"){
     document.getElementById('header').innerHTML = 'LINK COPIED SUCCESSFULL';
-    copy(content);
   }
 
   else if(content.slice(0,8)=="magnet:?"){
-    copy(content);
 }
 else{
   document.getElementById('header').innerHTML = 'COPY SUCCESSFULL';
   document.getElementById('l').innerHTML = 'Data Copied:-';
-  copy(content);
+  
 }
+setTimeout(copy(content), 3000);
   }
   
 </script>
