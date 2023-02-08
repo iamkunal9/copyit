@@ -4,16 +4,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div style="display: none;">
-  
-<input type="text" value="Hello World" id="myInput">
-
-</div>
 <div id="div">
 <marquee direction="left" height="150" width="auto" bgcolor="white" style="font-size:100px" id="header">MAGNET LINK COPIED SUCCESSFULLY</marquee>
 <div align="center">
 <h3 id="l">Link Copied:-</h3>
 <input id="data" ></input>
+<span style="align:center;"><a href="javascript:copy()">Copy To clipboard</a></span>
 <!-- <a href="https://www.utorrent.com/">Download using utorrent</a> -->
 </div>
 </div>
@@ -33,8 +29,8 @@ return 0;
   return mag_link;
   }
 }
-function copy(content){
-  var copyText = document.getElementById("myInput");
+function copy(){
+  var copyText = document.getElementById("data");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(copyText.value);
@@ -45,7 +41,6 @@ function copy(content){
 
   }
   else{
-    document.getElementById("myInput").value = content;
   document.getElementById("data").value = content;
   if(content.slice(0,4)=="http"){
     document.getElementById('header').innerHTML = 'LINK COPIED SUCCESSFULL';
