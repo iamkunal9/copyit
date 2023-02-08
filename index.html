@@ -34,19 +34,20 @@ return 0;
   }
 }
 function copy(content){
-  document.getElementById("myInput").value = content;
-  document.getElementById("data").value = content;
-
   var copyText = document.getElementById("myInput");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   navigator.clipboard.writeText(copyText.value);
+  
 }
   var content = $_GET();
   if(content == 0){
 
   }
-  else if(content.slice(0,4)=="http"){
+  else{
+    document.getElementById("myInput").value = content;
+  document.getElementById("data").value = content;
+  if(content.slice(0,4)=="http"){
     document.getElementById('header').innerHTML = 'LINK COPIED SUCCESSFULL';
     copy(content);
   }
@@ -59,6 +60,8 @@ else{
   document.getElementById('l').innerHTML = 'Data Copied:-';
   copy(content);
 }
+  }
+  
 </script>
 </body>
 </html>
